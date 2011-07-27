@@ -1,0 +1,58 @@
+a:5:{s:4:"save";a:3:{s:13:"extension_key";s:12:"simplirobots";s:18:"print_wop_comments";s:1:"0";s:15:"overwrite_files";a:8:{s:9:"ChangeLog";s:1:"1";s:10:"README.txt";s:1:"1";s:12:"ext_icon.gif";s:1:"1";s:14:"ext_tables.php";s:1:"1";s:19:"doc/wizard_form.dat";s:1:"1";s:20:"doc/wizard_form.html";s:1:"1";s:38:"static/simpli_robots.txt/constants.txt";s:1:"1";s:34:"static/simpli_robots.txt/setup.txt";s:1:"1";}}s:6:"emconf";a:1:{i:1;a:7:{s:5:"title";s:17:"simpli robots.txt";s:11:"description";s:104:"Generates a robots.txt fully configarable by Typoscript. Usefull for multidomain and multilingual sites.";s:8:"category";s:2:"fe";s:5:"state";s:5:"alpha";s:12:"dependencies";s:34:"weeaar_robotstxt, robots_exclusion";s:6:"author";s:14:"Michael Reuber";s:12:"author_email";s:33:"michael.reuber@simpli-cissimus.de";}}s:9:"languages";a:0:{}s:2:"pi";a:0:{}s:2:"ts";a:1:{i:1;a:3:{s:5:"title";s:17:"simpli robots.txt";s:9:"constants";s:1029:"plugin.tx_simplirobots_pi1 {
+  # cat=simplirobots/basic/010; type=string; label= Domain without http:// and trailing slash
+  domain =
+  
+  # cat=simplirobots/enable/020; type=boolean; label= Set Allow: /   
+  allow = 1
+  
+  
+  disallow {
+    # cat=simplirobots/enable/030; type=boolean; label= Set Disallow: /t3lib/
+    t3lib = 1
+    
+    # cat=simplirobots/enable/040; type=boolean; label= Set Disallow: /typo3/ 
+    typo3 = 1
+    
+    # cat=simplirobots/enable/050; type=boolean; label= Set Disallow: /typo3conf/   
+    typo3conf = 1
+    
+    # cat=simplirobots/enable/060; type=boolean; label= Disallow: /typo3temp/  
+    typo3temp = 1
+    
+    # cat=simplirobots/enable/070; type=boolean; label= Disallow: /fileadmin/
+    fileadmin = 0
+    
+    # cat=simplirobots/enable/080; type=string; label= additional folders to disallow, comma separated
+    additional = 
+  }
+  
+  sitemap{
+    # cat=simplirobots/enable/090; type=string; label= list of sitemap files, comma separated
+    allow = 1
+  }
+}";s:5:"setup";s:826:"plugin.tx_simplirobots_pi1 {
+  domain = {$plugin.tx_simplirobots_pi1.domain}
+  allow =  {$plugin.tx_simplirobots_pi1.allow}
+  disallow {
+    t3lib       = {$plugin.tx_simplirobots_pi1.disallow.t3lib}
+    typo3       = {$plugin.tx_simplirobots_pi1.disallow.typo3}
+    typo3conf   = {$plugin.tx_simplirobots_pi1.disallow.typo3conf}
+    typo3temp   = {$plugin.tx_simplirobots_pi1.disallow.typo3temp}
+    fileadmin   = {$plugin.tx_simplirobots_pi1.disallow.fileadmin}
+    additional  = {$plugin.tx_simplirobots_pi1.disallow.additional}
+  }
+  sitemap       = {$plugin.tx_simplirobots_pi1.sitemap}
+  typeNum = 201
+}
+robots = PAGE
+robots {
+  typeNum = 201
+  10 >
+  10 < plugin.tx_simplirobots_pi1
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:text/plain
+    no_cache = 1
+  }
+}
+";}}}
