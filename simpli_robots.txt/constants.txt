@@ -1,0 +1,34 @@
+plugin.tx_simplirobots_pi1 {
+  # cat=simplirobots/basic/010; type=string; label= Domain without http:// and trailing slash
+  domain =
+
+  # cat=simplirobots/enable/020; type=boolean; label= Set Allow: /
+  allow = 1
+
+
+  disallow {
+    # cat=simplirobots/enable/030; type=boolean; label= Set Disallow: /t3lib/
+    t3lib = 1
+
+    # cat=simplirobots/enable/040; type=boolean; label= Set Disallow: /typo3/
+    typo3 = 1
+
+    # cat=simplirobots/enable/050; type=boolean; label= Set Disallow: /typo3conf/
+    typo3conf = 1
+
+    # cat=simplirobots/enable/060; type=boolean; label= Disallow: /typo3temp/
+    typo3temp = 1
+
+    # cat=simplirobots/enable/070; type=boolean; label= Disallow: /fileadmin/
+    fileadmin = 0
+
+    # cat=simplirobots/enable/080; type=string; label= additional folders to disallow, comma separated
+    additional =
+  }
+
+  # cat=simplirobots/enable/090; type=string; label= list of sitemap files, comma separated
+  sitemap=
+
+  typeNum = 202
+
+}
