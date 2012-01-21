@@ -82,8 +82,16 @@ class tx_simplirobots_pi1 extends tslib_pibase {
           $content.='Disallow: /fileadmin/
 ';
         }
+        // checks the delimiter
+        if($this->conf['delimit']){
+          $delimit = $this->conf['delimit'];
+        }
+        else // nothing set default = ','
+        {
+          $delimit = ',';
+        }
         if($this->conf['disallow.']['additional']) {
-          foreach(t3lib_div::trimExplode(',', $this->conf['disallow.']['additional'], 1) as $value) {
+          foreach(t3lib_div::trimExplode($delimit, $this->conf['disallow.']['additional'], 1) as $value) {
               if (t3lib_div::validPathStr($value)) { // correct path
               $content.=  'Disallow: /' . $value . '
 ';
@@ -99,7 +107,7 @@ class tx_simplirobots_pi1 extends tslib_pibase {
           {
             $domain = t3lib_div::getIndpEnv('TYPO3_REQUEST_HOST');
           }
-          foreach(t3lib_div::trimExplode(',', $this->conf['sitemap'], 1) as $value) {
+          foreach(t3lib_div::trimExplode($delimit, $this->conf['sitemap'], 1) as $value) {
               $content.=  'Sitemap: ' . $domain . '/' . $value . '
 ';
           }
