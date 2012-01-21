@@ -11,6 +11,7 @@ plugin.tx_simplirobots_pi1 {
   }
   sitemap       = {$plugin.tx_simplirobots_pi1.sitemap}
   typeNum       = {$plugin.tx_simplirobots_pi1.typeNum}
+  delimit     = {$plugin.tx_simplirobots_pi1.delimit}
 }
 robots = PAGE
 robots {

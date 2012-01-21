@@ -31,4 +31,6 @@ plugin.tx_simplirobots_pi1 {
 
   typeNum = 202
 
+  delimit = ,
+
 }
