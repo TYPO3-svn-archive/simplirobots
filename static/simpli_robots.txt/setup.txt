@@ -1,25 +1,26 @@
-plugin.tx_simplirobots_pi1 {
-  domain = {$plugin.tx_simplirobots_pi1.domain}
-  allow =  {$plugin.tx_simplirobots_pi1.allow}
-  disallow {
-    t3lib       = {$plugin.tx_simplirobots_pi1.disallow.t3lib}
-    typo3       = {$plugin.tx_simplirobots_pi1.disallow.typo3}
-    typo3conf   = {$plugin.tx_simplirobots_pi1.disallow.typo3conf}
-    typo3temp   = {$plugin.tx_simplirobots_pi1.disallow.typo3temp}
-    fileadmin   = {$plugin.tx_simplirobots_pi1.disallow.fileadmin}
-    additional  = {$plugin.tx_simplirobots_pi1.disallow.additional}
-  }
-  sitemap       = {$plugin.tx_simplirobots_pi1.sitemap}
-  typeNum = 201
-}
-robots = PAGE
-robots {
-  typeNum = 201
-  10 >
-  10 < plugin.tx_simplirobots_pi1
-  config {
-    disableAllHeaderCode = 1
-    additionalHeaders = Content-type:text/plain
-    no_cache = 1
-  }
-}
+plugin.tx_simplirobots_pi1 {
+  domain = {$plugin.tx_simplirobots_pi1.domain}
+  allow =  {$plugin.tx_simplirobots_pi1.allow}
+  disallow {
+    t3lib       = {$plugin.tx_simplirobots_pi1.disallow.t3lib}
+    typo3       = {$plugin.tx_simplirobots_pi1.disallow.typo3}
+    typo3conf   = {$plugin.tx_simplirobots_pi1.disallow.typo3conf}
+    typo3temp   = {$plugin.tx_simplirobots_pi1.disallow.typo3temp}
+    fileadmin   = {$plugin.tx_simplirobots_pi1.disallow.fileadmin}
+    additional  = {$plugin.tx_simplirobots_pi1.disallow.additional}
+  }
+  sitemap       = {$plugin.tx_simplirobots_pi1.sitemap}
+  typeNum       = {$plugin.tx_simplirobots_pi1.typeNum}
+  delimit     = {$plugin.tx_simplirobots_pi1.delimit}
+}
+robots = PAGE
+robots {
+  typeNum = {$plugin.tx_simplirobots_pi1.typeNum}
+  10 >
+  10 < plugin.tx_simplirobots_pi1
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:text/plain
+    no_cache = 1
+  }
+}

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2011 Michael Reuber <michael.reuber@simpli-cissimus.de>
+*  (c) 2011 Michael Reuber <michael.reuber@gmx.de>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -33,7 +33,7 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
 /**
  * Plugin '' for the 'simplirobots' extension.
  *
- * @author    Michael Reuber <michael.reuber@simpli-cissimus.de>
+ * @author    Michael Reuber <michael.reuber@gmx.de>
  * @package    TYPO3
  * @subpackage    tx_simplirobots
  */
@@ -42,7 +42,7 @@ class tx_simplirobots_pi1 extends tslib_pibase {
     var $scriptRelPath = 'pi1/class.tx_simplirobots_pi1.php';    // Path to this script relative to the extension dir.
     var $extKey        = 'simplirobots';    // The extension key.
     var $pi_checkCHash = true;
-    
+
     /**
      * The main method of the PlugIn
      *
@@ -54,36 +54,44 @@ class tx_simplirobots_pi1 extends tslib_pibase {
         $this->conf = $conf;
         $this->pi_setPiVarDefaults();
         $this->pi_loadLL();
-        
-    
+
+
         $content='User-Agent: *
 ';
         if($this->conf['allow']) {
-          $content.='Allow: / 
+          $content.='Allow: /
 ';
         }
         if($this->conf['disallow.']['t3lib']) {
-          $content.='Disallow: /t3lib/ 
+          $content.='Disallow: /t3lib/
 ';
         }
         if($this->conf['disallow.']['typo3']) {
-          $content.='Disallow: /typo3/ 
+          $content.='Disallow: /typo3/
 ';
         }
         if($this->conf['disallow.']['typo3conf']) {
-          $content.='Disallow: /typo3conf/ 
+          $content.='Disallow: /typo3conf/
 ';
         }
         if($this->conf['disallow.']['typo3temp']) {
-          $content.='Disallow: /typo3temp/ 
+          $content.='Disallow: /typo3temp/
 ';
         }
         if($this->conf['disallow.']['fileadmin']) {
-          $content.='Disallow: /fileadmin/ 
+          $content.='Disallow: /fileadmin/
 ';
         }
+        // checks the delimiter
+        if($this->conf['delimit']){
+          $delimit = $this->conf['delimit'];
+        }
+        else // nothing set default = ','
+        {
+          $delimit = ',';
+        }
         if($this->conf['disallow.']['additional']) {
-          foreach(t3lib_div::trimExplode(',', $this->conf['disallow.']['additional'], 1) as $value) {
+          foreach(t3lib_div::trimExplode($delimit, $this->conf['disallow.']['additional'], 1) as $value) {
               if (t3lib_div::validPathStr($value)) { // correct path
               $content.=  'Disallow: /' . $value . '
 ';
@@ -93,13 +101,13 @@ class tx_simplirobots_pi1 extends tslib_pibase {
         }
         if($this->conf['sitemap']) {
           if($this->conf['domain']) {
-            $domain = 'http://' . $this->conf['domain'] .'/';
+            $domain = 'http://' . $this->conf['domain'];
           }
           else
           {
             $domain = t3lib_div::getIndpEnv('TYPO3_REQUEST_HOST');
           }
-          foreach(t3lib_div::trimExplode(',', $this->conf['sitemap'], 1) as $value) {
+          foreach(t3lib_div::trimExplode($delimit, $this->conf['sitemap'], 1) as $value) {
               $content.=  'Sitemap: ' . $domain . '/' . $value . '
 ';
           }
